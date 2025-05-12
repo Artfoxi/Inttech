@@ -1,0 +1,272 @@
+/* Общие стили */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* Стили для .page_container */
+.page_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Стили для шапки */
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.header1 img {
+    height: 30px;
+}
+
+.language-toggle a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.language-toggle a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для секции hero */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: #ccc;
+    margin: 20px 0;
+}
+
+/* Стили для изображения */
+.hero-image {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: visible; /* Предотвращаем обрезку при увеличении */
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* Плавный переход для эффекта увеличения */
+}
+
+/* Эффект увеличения при наведении */
+.hero-image:hover img {
+    transform: scale(1.1); /* Увеличиваем изображение на 10% */
+}
+
+/* Наложение (например, для карты с городами) */
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: url('path-to-overlay-image.png') no-repeat center; */ /* Закомментировано */
+    background-size: cover;
+    opacity: 0.8;
+}
+
+/* Стили для галереи */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 столбца */
+    gap: 15px;
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative; /* Для корректной работы transform */
+    border-radius: 10px;
+    aspect-ratio: 1 / 1; /* Делаем контейнер квадратным */
+    padding: 20px; /* Добавляем внутренние отступы для большего пространства */
+    transition: transform 0.3s ease; /* Плавный переход для параллакса */
+    overflow: visible; /* Предотвращаем обрезку при увеличении */
+}
+
+.gallery-item-inner {
+    opacity: 0; /* Начальное состояние для анимации */
+    transform: translateY(50px); /* Начальное смещение вниз для "выплывания" */
+    transition: opacity 1s ease, transform 1s ease; /* Плавная анимация "выплывания" и "прилёта" */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%; /* Заполняем контейнер */
+    object-fit: cover; /* Сохраняем пропорции */
+    display: block;
+    border-radius: 10px; /* Скругляем углы изображения */
+    transition: transform 0.3s ease; /* Плавный переход для эффекта увеличения */
+}
+
+/* Эффект увеличения при наведении */
+.gallery-item-inner:hover img {
+    transform: scale(1.1); /* Увеличиваем изображение на 10% */
+}
+
+/* Анимация "выплывания" снизу вверх */
+.gallery-item-inner.fade-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Анимация "прилёта" для столбцов 1 и 2 (слева направо) */
+.gallery-item[data-column="1"] .gallery-item-inner.slide-in,
+.gallery-item[data-column="2"] .gallery-item-inner.slide-in {
+    animation: slideInLeftToRight 1s ease forwards;
+}
+
+/* Анимация "прилёта" для столбцов 3 и 4 (справа налево) */
+.gallery-item[data-column="3"] .gallery-item-inner.slide-in,
+.gallery-item[data-column="4"] .gallery-item-inner.slide-in {
+    animation: slideInRightToLeft 1s ease forwards;
+}
+
+/* Ключевые кадры для анимации слева направо */
+@keyframes slideInLeftToRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-300px) translateY(50px); /* Учитываем начальное смещение для "выплывания" */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(0); /* Конечная позиция */
+    }
+}
+
+/* Ключевые кадры для анимации справа налево */
+@keyframes slideInRightToLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(300px) translateY(50px); /* Учитываем начальное смещение для "выплывания" */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(0); /* Конечная позиция */
+    }
+}
+
+/* Стили для .cover-image */
+.cover-image {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Стили для футера */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-top: 40px;
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: none;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 1em;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+/* Адаптивность */
+@media (min-width: 1025px) {
+    .gallery-item[data-column="2"],
+    .gallery-item[data-column="4"] {
+        transform: translateY(60px); /* Смещение вниз только для экранов больше 1024px */
+    }
+}
+
+@media (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для 1024–768 */
+    }
+
+    /* Сбрасываем смещение для всех колонок на меньших экранах */
+    .gallery-item[data-column="2"],
+    .gallery-item[data-column="4"] {
+        transform: translateY(0); /* Убираем смещение */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .header {
+        padding: 10px;
+    }
+
+    .header img {
+        height: 25px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для 768 и ниже */
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        margin: 0 10px;
+    }
+
+    .footer-copyright {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr; /* 1 колонка для <480px */
+        gap: 5px; /* Уменьшаем расстояние между элементами до 5px */
+    }
+
+    .gallery-item {
+        padding: 10px; /* Оставляем внутренние отступы */
+    }
+}
