@@ -1,0 +1,221 @@
+.header {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: white;
+}
+
+    .header h1 {
+        margin: 0;
+        font-size: 36px;
+    }
+
+.main {
+    padding: 20px 0;
+}
+
+.page_container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefits {
+    padding: 20px 0;
+}
+
+/* �������� ��������� �������� */
+#immersive_slider {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    background: #161923;
+    overflow: hidden;
+}
+
+/* ��������� ��� ������� */
+.is-overflow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ����� ��� ������� */
+#immersive_slider .is-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 100px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    z-index: 1;
+}
+
+    /* �������� ����� */
+    #immersive_slider .is-slide.active {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+        z-index: 10;
+    }
+
+    /* �������� ��������� */
+    #immersive_slider .is-slide.from-left {
+        transform: translateX(-100%);
+    }
+
+    #immersive_slider .is-slide.from-right {
+        transform: translateX(100%);
+    }
+
+    /* �������� ����� */
+    #immersive_slider .is-slide.exiting-to-right {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    #immersive_slider .is-slide.exiting-to-left {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    /* ������� ������ ������ */
+    #immersive_slider .is-slide .content {
+        width: 50%;
+        padding-right: 20px;
+        box-sizing: border-box;
+        color: white;
+        text-align: left;
+        line-height: 160%;
+        overflow-y: auto;
+        max-height: 100%;
+    }
+
+        #immersive_slider .is-slide .content h2 {
+            font-size: 42px;
+            font-weight: 300;
+            text-align: left;
+            margin: 0 0 10px 0;
+        }
+
+        #immersive_slider .is-slide .content p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+    #immersive_slider .is-slide .image {
+        width: 50%;
+        padding-left: 20px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-height: 100%;
+        /* ������� overflow: hidden, ����� ����������� �� ���������� */
+    }
+
+        #immersive_slider .is-slide .image img {
+            max-width: 100%;
+            max-height: 100%;
+            /* �������� object-fit: contain �� object-fit: scale-down, ����� ����������� ����������������, �� �� ���������� */
+            object-fit: scale-down;
+            /* ������� "�����������" � ������, �������� object-position: center */
+            object-position: center;
+        }
+
+/* ��������� ��� ����� */
+.is-bg-overflow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* ����� ��� ����� */
+.is-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+    /* �������� ��� */
+    .is-background.active {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+    }
+
+    /* �������� ��������� ���� */
+    .is-background.from-left {
+        transform: translateX(-100%);
+    }
+
+    .is-background.from-right {
+        transform: translateX(100%);
+    }
+
+    /* �������� ����� ���� */
+    .is-background.exiting-to-right {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    .is-background.exiting-to-left {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    .is-background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* ������ �������� ��� ���� */
+.is-background {
+    -webkit-filter: blur(20px);
+    -moz-filter: blur(20px);
+    -o-filter: blur(20px);
+    filter: blur(20px);
+}
+
+/* ������ ��������� */
+.is-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 20;
+}
+
+.is-prev,
+.is-next {
+    position: absolute;
+    font-size: 50px;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 5px 10px;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.is-prev {
+    left: 10px;
+}
+
+.is-next {
+    right: 10px;
+}
